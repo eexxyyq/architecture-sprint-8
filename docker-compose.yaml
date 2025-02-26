@@ -56,7 +56,8 @@ services:
     ports:
       - "8000:8080"
     environment:
-      ISSUER_URI: http://localhost:8080/realms/reports-realm
+      ISSUER_URI: http://localhost:8080
+      JWK_URI: http://keycloak:8080
     networks:
       - reports-network
 

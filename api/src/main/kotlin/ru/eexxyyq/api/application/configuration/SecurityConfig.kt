@@ -37,6 +37,9 @@ class SecurityConfig {
         val converter = JwtAuthenticationConverter()
 
         converter.setJwtGrantedAuthoritiesConverter { jwt ->
+            val iss = jwt.issuer
+            println("ISS: $iss")
+
             val authorities = mutableListOf<SimpleGrantedAuthority>()
             val roles = jwt.getClaim<Map<String, Any>>("realm_access")
                 ?.get("roles") as? List<String> ?: emptyList()
